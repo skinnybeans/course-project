@@ -19,7 +19,7 @@ export class RecipeListComponent implements OnInit {
     'https://assets.pokemon.com/assets/cms2/img/pokedex/full/002.png')
   ];
 
-  @Output() recipeSelected = new EventEmitter<Recipe>();
+  @Output() recipeWasSelected = new EventEmitter<Recipe>();
 
   constructor() { }
 
@@ -27,6 +27,6 @@ export class RecipeListComponent implements OnInit {
   }
 
   onRecipeSelected(recipe: Recipe) {
-    this.recipeSelected.emit(recipe);
+    this.recipeWasSelected.emit(recipe);
   }
 }
