@@ -5,13 +5,9 @@ import { elementClassProp } from '@angular/core/src/render3';
     selector: '[appDropDown]'
 })
 export class DropDownDirective {
-    @HostBinding('class') elementShown = '';
+    @HostBinding('class.open') isOpen = false;
 
-    @HostListener('click') mouseClick(eventData: Event) {
-        if (this.elementShown === 'open') {
-            this.elementShown = '';
-        } else {
-            this.elementShown = 'open';
-        }
+    @HostListener('click') toggleOpen(eventData: Event) {
+        this.isOpen = !this.isOpen;
     }
 }
