@@ -1,5 +1,4 @@
 import { Directive, HostBinding, HostListener } from '@angular/core';
-import { elementClassProp } from '@angular/core/src/render3';
 
 @Directive({
     selector: '[appDropDown]'
