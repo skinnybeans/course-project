@@ -10,16 +10,18 @@ export class RecipeService {
 
     recipesChanged = new Subject<Recipe[]>();
 
-    private recipes: Recipe[] = [
-        new Recipe('Test Recipe',
-        'My test recipe',
-        'https://assets.pokemon.com/assets/cms2/img/pokedex/full/001.png',
-        [new Ingredient('chicken', 1), new Ingredient('lettuce', 2)]),
-        new Recipe('Test Recipe 2',
-        'My test recipe 2',
-        'https://assets.pokemon.com/assets/cms2/img/pokedex/full/002.png',
-        [new Ingredient('mince', 3), new Ingredient('pasta', 2)])
-      ];
+    // private recipes: Recipe[] = [
+    //     new Recipe('Test Recipe',
+    //     'My test recipe',
+    //     'https://assets.pokemon.com/assets/cms2/img/pokedex/full/001.png',
+    //     [new Ingredient('chicken', 1), new Ingredient('lettuce', 2)]),
+    //     new Recipe('Test Recipe 2',
+    //     'My test recipe 2',
+    //     'https://assets.pokemon.com/assets/cms2/img/pokedex/full/002.png',
+    //     [new Ingredient('mince', 3), new Ingredient('pasta', 2)])
+    //   ];
+
+    private recipes: Recipe[] = [];
 
       constructor(private shoppingListService: ShoppingListService) {}
 
@@ -49,6 +51,11 @@ export class RecipeService {
 
     deleteRecipe(index: number) {
         this.recipes.splice(index, 1);
+        this.recipesChanged.next(this.recipes.slice());
+    }
+
+    setRecipes(recipes: Recipe[]) {
+        this.recipes = recipes;
         this.recipesChanged.next(this.recipes.slice());
     }
 }
